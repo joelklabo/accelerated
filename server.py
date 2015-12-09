@@ -14,6 +14,15 @@ app = Flask(__name__)
 #wallet = Wallet()
 #payment = Payment(app, wallet)
 
+# Sort method w/o delay simulates faster computation server
+def fast_get_element(arr, prop, val):
+  for elem in arr:
+    if elem[prop] == val:
+      return elem
+
+def get_array_to_sort(request):
+  return json.loads(request.form.getlist("array")[0])
+
 if __name__ == '__main__':
   app.debug = True
   app.run(host='0.0.0.0', port=PORT)
