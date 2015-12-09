@@ -23,6 +23,15 @@ def fast_get_element(arr, prop, val):
 def get_array_to_sort(request):
   return json.loads(request.form.getlist("array")[0])
 
+@app.route('/fastfind', methods=['GET', 'POST'])
+@payment.required(800)
+def fast_get_elem():
+  arr = get_array_to_sort(request)
+  prop = request.form.getlist("property")[0]
+  value = int(request.form.getlist("value")[0])
+  res = fast_get_element(arr, prop, value) 
+  return json.dumps({"elem": str(res)}) 
+
 if __name__ == '__main__':
   app.debug = True
   app.run(host='0.0.0.0', port=PORT)
