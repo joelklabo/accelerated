@@ -7,7 +7,7 @@ from flask import request
 #from two1.lib.wallet import Wallet
 #from two1.lib.bitserv.flask import Payment
 
-PORT = 5000
+PORT = 5003
 
 # Configure the app
 app = Flask(__name__)
