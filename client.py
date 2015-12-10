@@ -61,8 +61,17 @@ data1 = [
   {'height': 10}
 ]
 
+# Get users 21.co balance
+bal = client.get_earnings()
+twentyone_balance = bal["total_earnings"]
+
 t0 = time.time()
-a = get_element(data1, 'height', 10)
+
+if twentyone_balance > price:
+  a = fast_get_element(data1, 'height', 10)
+else:
+  a = get_element(data1, 'height', 10)
+
 t1 = time.time()
 
 # Print results
