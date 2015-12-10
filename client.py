@@ -29,7 +29,6 @@ requests = BitTransferRequests(wallet, username)
 response = requests.get_402_info(url=SERVER_URL)
 endpoint_info = dict(response)
 price = int(endpoint_info['price'])
-print(endpoint_info)
 
 def get_element(arr, prop, val):
   for elem in arr:
@@ -46,3 +45,26 @@ def fast_get_element(arr, prop, val):
   }
   res = requests.post(url=SERVER_URL, data=body)
   return json.loads(res.text)['elem']
+
+# Sample data
+data1 = [
+  {'height': 4},
+  {'height': 3},
+  {'height': 6},
+  {'height': 4},
+  {'height': 3},
+  {'height': 6},
+  {'height': 4},
+  {'height': 4},
+  {'height': 3},
+  {'height': 6},
+  {'height': 10}
+]
+
+t0 = time.time()
+a = get_element(data1, 'height', 10)
+t1 = time.time()
+
+# Print results
+print(a)
+print("Execution time: " + str(t1-t0))
